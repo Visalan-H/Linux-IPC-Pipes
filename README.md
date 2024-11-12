@@ -50,10 +50,8 @@ server(p1[0],p2[1]); return 0;
 close(p1[0]); 
 close(p2[1]); 
 client(p1[1],p2[0]); 
-wait(waits); 
-return 0; 
+wait(waits); return 0; 
 } 
-
 void server(int rfd,int wfd) 
 { 
 int i,j,n; 
@@ -63,10 +61,8 @@ n=read(rfd,fname,2000);
 fname[n]='\0';
 int fd=open(fname,O_RDONLY);
 sleep(10); 
-if(fd<0) 
-write(wfd,"can't open",9); 
-else 
-n=read(fd,buff,2000); 
+if(fd<0) write(wfd,"can't open",9); 
+else n=read(fd,buff,2000); 
 write(wfd,buff,n); 
 }
 void client(int wfd,int rfd) {
@@ -99,9 +95,6 @@ if (res == 0) printf("FIFO created\n");
 exit(EXIT_SUCCESS);
 }
 ```
-
-
-
 ## OUTPUT
 ![image](https://github.com/user-attachments/assets/c4a50943-b9b1-4e14-8750-c820eae18a15)
 ![image](https://github.com/user-attachments/assets/06fad25e-d878-496c-859b-56bc02a2328f)
