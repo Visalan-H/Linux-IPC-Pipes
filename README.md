@@ -37,24 +37,20 @@ Testing the C Program for the desired output.
 void server(int,int); 
 void client(int,int); 
 int main() 
-{ 
-int p1[2],p2[2],pid, *waits; 
+{ int p1[2],p2[2],pid, *waits; 
 pipe(p1); 
 pipe(p2); 
 pid=fork(); 
 if(pid==0) { 
 close(p1[1]); 
 close(p2[0]); 
-server(p1[0],p2[1]); return 0;
- } 
+server(p1[0],p2[1]); return 0;} 
 close(p1[0]); 
 close(p2[1]); 
 client(p1[1],p2[0]); 
-wait(waits); return 0; 
-} 
+wait(waits); return 0; } 
 void server(int rfd,int wfd) 
-{ 
-int i,j,n; 
+{ int i,j,n; 
 char fname[2000]; 
 char buff[2000];
 n=read(rfd,fname,2000);
@@ -63,8 +59,7 @@ int fd=open(fname,O_RDONLY);
 sleep(10); 
 if(fd<0) write(wfd,"can't open",9); 
 else n=read(fd,buff,2000); 
-write(wfd,buff,n); 
-}
+write(wfd,buff,n); }
 void client(int wfd,int rfd) {
 int i,j,n; char fname[2000];
 char buff[2000];
@@ -79,10 +74,9 @@ printf("THE RESULTS OF CLIENTS ARE ...... \n"); write(1,buff,n);
 }
 ```
 ## OUTPUT
-![image](https://github.com/user-attachments/assets/01aa3e6c-f511-4022-8e94-8ca496a66043)
+<img src="https://github.com/user-attachments/assets/01aa3e6c-f511-4022-8e94-8ca496a66043" width="350px">
 
 ## C Program that illustrate communication between two process using named pipes using Linux API system calls
-
 ```c
 #include <unistd.h>
 #include <stdlib.h>
@@ -96,8 +90,9 @@ exit(EXIT_SUCCESS);
 }
 ```
 ## OUTPUT
-![image](https://github.com/user-attachments/assets/c4a50943-b9b1-4e14-8750-c820eae18a15)
-![image](https://github.com/user-attachments/assets/06fad25e-d878-496c-859b-56bc02a2328f)
 
+<img src="https://github.com/user-attachments/assets/c4a50943-b9b1-4e14-8750-c820eae18a15" width="350px">
+
+<img src="https://github.com/user-attachments/assets/06fad25e-d878-496c-859b-56bc02a2328f" width="350px">
 # RESULT:
 The program is executed successfully.
